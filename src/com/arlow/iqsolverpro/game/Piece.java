@@ -1,8 +1,9 @@
 package com.arlow.iqsolverpro.game;
 
 public class Piece {
+    public char key;
     public boolean[][] shape;
-    public int position;
+    public int position = -1;
     public int pivotX;
     public int pivotY;
 
