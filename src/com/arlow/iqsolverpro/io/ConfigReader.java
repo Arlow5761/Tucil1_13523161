@@ -22,14 +22,14 @@ public class ConfigReader {
         String dimensionsLine = configScanner.nextLine().stripTrailing();
         Matcher dimensionsMatcher = dimensionsPattern.matcher(dimensionsLine);
 
-        if (!dimensionsMatcher.matches()) {
+        if (!dimensionsMatcher.find()) {
             configScanner.close();
             throw new IOException("config does not match expected format");
         }
 
-        int height = Integer.parseInt(dimensionsMatcher.group(0));
-        int width = Integer.parseInt(dimensionsMatcher.group(1));
-        int pieceCount = Integer.parseInt(dimensionsMatcher.group(2));
+        int height = Integer.parseInt(dimensionsMatcher.group(1));
+        int width = Integer.parseInt(dimensionsMatcher.group(2));
+        int pieceCount = Integer.parseInt(dimensionsMatcher.group(3));
 
         String boardType = configScanner.nextLine().stripTrailing();
         Board board;
@@ -88,7 +88,7 @@ public class ConfigReader {
             boolean[] patternBuffer = new boolean[currentLine.length()];
             char firstChar = ' ';
 
-            for (int i = 0; i < currentLine.length() - 1; i++) {
+            for (int i = 0; i < currentLine.length(); i++) {
                 if (currentLine.charAt(i) == ' ') {
                     patternBuffer[i] = false;
                 } else if (firstChar == ' ') {
@@ -114,7 +114,7 @@ public class ConfigReader {
 
             pieces[currentPiece].key = currentChar;
 
-            if (pieces[currentPiece].shape.length <= 0) {
+            if (pieces[currentPiece].shape == null) {
                 pieces[currentPiece].shape = new boolean[][] {patternBuffer};
 
                 pieces[currentPiece].pivotY = 0;
