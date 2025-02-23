@@ -1,0 +1,1 @@
+javac -sourcepath ./src/ -d ./bin/ --module-path ./lib/openjfx-23.0.2_windows-x64_bin-sdk/lib --add-modules javafx.controls ./src/com/arlow/iqsolverpro/gui/Main.java

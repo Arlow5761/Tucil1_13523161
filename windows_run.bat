@@ -1,0 +1,1 @@
+java -cp bin --module-path ./lib/openjfx-23.0.2_windows-x64_bin-sdk/lib --add-modules javafx.controls com.arlow.iqsolverpro.gui.Main
