@@ -2,6 +2,7 @@ package com.arlow.iqsolverpro.game;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
 public class GameInstance {
@@ -14,9 +15,9 @@ public class GameInstance {
     public List<Piece> availablePieces;
     public Board board;
 
-    private List<GameEventListener> listeners;
-    private List<GameEventListener> listenerAddList;
-    private List<GameEventListener> listenerRemoveList;
+    private List<GameEventListener> listeners = new LinkedList<GameEventListener>();
+    private List<GameEventListener> listenerAddList = new LinkedList<GameEventListener>();
+    private List<GameEventListener> listenerRemoveList = new LinkedList<GameEventListener>();
 
     public GameInstance(Piece[] pieces, Board board) {
         this.availablePieces = new ArrayList<Piece>(Arrays.asList(pieces));
