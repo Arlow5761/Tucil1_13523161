@@ -39,7 +39,7 @@ public class RectangularBoard implements Board {
         Plane plane = new Plane();
         plane.source = this;
 
-        plane.positionMap = new int[width][length];
+        plane.positionMap = new int[length][width];
 
         for (int i = 0; i < width * length; i++)
         {
