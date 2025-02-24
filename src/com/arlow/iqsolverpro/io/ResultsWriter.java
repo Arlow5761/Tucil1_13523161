@@ -29,58 +29,78 @@ public class ResultsWriter {
         }
     }
 
-    private static void PrintResults(SolveStats results, OutputStream outputStream) throws IOException {
-        try (Writer writer = new PrintWriter(outputStream)) {
-            writer.write("Solving Results\n");
+    public static void PrintResults(SolveStats results, OutputStream outputStream) throws IOException {
+        Writer writer = new PrintWriter(outputStream);
 
-            writer.write("Solution found: ");
-            if (results.solutionExists) {
-                writer.write("Yes\n");
-            } else {
-                writer.write("No\n");
-            }
+        writer.write("Solving Results\n");
 
-            writer.write("Time taken: ");
-            writer.write(Long.toString(results.timeTakenInMs));
-            writer.write("ms\n");
-
-            writer.write("Steps taken: ");
-            writer.write(Integer.toString(results.stepsTaken));
-            writer.write("\n");
-
-            writer.flush();
+        writer.write("Solution found: ");
+        if (results.solutionExists) {
+            writer.write("Yes\n");
+        } else {
+            writer.write("No\n");
         }
+
+        writer.write("Time taken: ");
+        writer.write(Long.toString(results.timeTakenInMs));
+        writer.write("ms\n");
+
+        writer.write("Steps taken: ");
+        writer.write(Integer.toString(results.stepsTaken));
+        writer.write("\n");
+
+        writer.flush();
     }
 
     private static void DrawRectangularBoard(RectangularBoard board, OutputStream outputStream) throws IOException {
-        try (Writer writer = new PrintWriter(outputStream)) {
-            for (int j = 0; j < board.width; j++) {
-                for (int i = 0; i < board.length; i++) {
-                    Piece piece = board.GetPieceOnPosition(j * board.width + i);
-                    if (piece != null) {
-                        writer.append(piece.key);
-                    } else {
-                        writer.append('.');
-                    }
+        Writer writer = new PrintWriter(outputStream);
+        for (int j = 0; j < board.length; j++) {
+            for (int i = 0; i < board.width; i++) {
+                Piece piece = board.GetPieceOnPosition(j * board.width + i);
+                if (piece != null) {
+                    writer.append(piece.key);
+                } else {
+                    writer.append('.');
                 }
-
-                writer.append('\n');
             }
 
-            writer.flush();
+            writer.append('\n');
         }
+
+        writer.flush();
     }
 
     private static void DrawCustomBoard(CustomBoard board, OutputStream outputStream) throws IOException {
-        try (Writer writer = new PrintWriter(outputStream)) {
-            for (int j = 0; j < board.length; j++) {
-                for (int i = 0; i < board.width; i++) {
-                    if (board.positionMap[j][i] == -1) {
-                        writer.append(' ');
-                        continue;
-                    }
+        Writer writer = new PrintWriter(outputStream);
+        for (int j = 0; j < board.length; j++) {
+            for (int i = 0; i < board.width; i++) {
+                if (board.positionMap[j][i] == -1) {
+                    writer.append(' ');
+                    continue;
+                }
 
-                    Piece piece = board.GetPieceOnPosition(board.positionMap[j][i]);
+                Piece piece = board.GetPieceOnPosition(board.positionMap[j][i]);
+
+                if (piece != null) {
+                    writer.append(piece.key);
+                } else {
+                    writer.append('.');
+                }
+            }
+
+            writer.append('\n');
+        }
+
+        writer.flush();
+    }
+
+    private static void DrawPyramidBoard(PyramidBoard board, OutputStream outputStream) throws IOException {
+        Writer writer = new PrintWriter(outputStream);
+        int counter = 0;
+        for (int i = 0; i < board.size; i++) {
+            for (int j = 0; j < board.size - i; j++) {
+                for (int k = 0; k < board.size - i; k++) {
+                    Piece piece = board.GetPieceOnPosition(counter);
 
                     if (piece != null) {
                         writer.append(piece.key);
@@ -92,32 +112,9 @@ public class ResultsWriter {
                 writer.append('\n');
             }
 
-            writer.flush();
+            writer.write("\n");
         }
-    }
 
-    private static void DrawPyramidBoard(PyramidBoard board, OutputStream outputStream) throws IOException {
-        try (Writer writer = new PrintWriter(outputStream)) {
-            int counter = 0;
-            for (int i = 0; i < board.size; i++) {
-                for (int j = 0; j < board.size - i; j++) {
-                    for (int k = 0; k < board.size - i; k++) {
-                        Piece piece = board.GetPieceOnPosition(counter);
-
-                        if (piece != null) {
-                            writer.append(piece.key);
-                        } else {
-                            writer.append('.');
-                        }
-                    }
-
-                    writer.append('\n');
-                }
-
-                writer.write("\n");
-            }
-
-            writer.flush();
-        }
+        writer.flush();
     }
 }

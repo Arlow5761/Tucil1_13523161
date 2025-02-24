@@ -12,9 +12,13 @@ public class BruteforceSolver implements Solver {
 
     public BruteforceSolver(GameInstance game, int delay) {
         this.game = game;
-        this.pieces = new Piece[game.availablePieces.size()];
         this.delay = delay;
         this.result = new SolveStats();
+
+        this.pieces = new Piece[game.availablePieces.size()];
+        for (int i = 0; i < game.availablePieces.size(); i++) {
+            this.pieces[i] = game.availablePieces.get(i);
+        }
     }
 
     public SolveStats Solve() {

@@ -47,9 +47,9 @@ public class ConfigReader {
                         throw new IOException("config does not match expected format");
                     }
 
-                    String patternLine = configScanner.nextLine();
+                    String patternLine = configScanner.nextLine().stripTrailing();
 
-                    if (!patternLine.matches("[.X]{" + width + "}\r?\n")) {
+                    if (!patternLine.matches("[.X]{" + width + "}")) {
                         configScanner.close();
                         throw new IOException("config does not match expected format");
                     }
