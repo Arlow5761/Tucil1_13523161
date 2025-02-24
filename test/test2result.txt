@@ -1,0 +1,9 @@
+AAABB
+DACCC
+DEE.C
+FEF.C
+FFF..
+Solving Results
+Solution found: No
+Time taken: 27ms
+Steps taken: 6

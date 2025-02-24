@@ -1,0 +1,6 @@
+AC
+BB
+Solving Results
+Solution found: Yes
+Time taken: 5ms
+Steps taken: 3

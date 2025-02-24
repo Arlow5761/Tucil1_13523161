@@ -1,0 +1,15 @@
+AAAA.
+ABCCC
+.BC.D
+KBBDD
+.BEEJ
+.EE.J
+.EFFF
+GGGFL
+HHG.L
+.HH.L
+..HI.
+Solving Results
+Solution found: No
+Time taken: 48ms
+Steps taken: 16

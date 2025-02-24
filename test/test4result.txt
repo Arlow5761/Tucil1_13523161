@@ -1,0 +1,12 @@
+AAAAABBB
+CCCC.B.B
+CDDDDEEE
+GGDFFFE.
+GG..FFEI
+HHH.JJII
+..HHJIIK
+LLLJJ..K
+Solving Results
+Solution found: No
+Time taken: 34ms
+Steps taken: 14

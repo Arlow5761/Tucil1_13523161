@@ -1,0 +1,9 @@
+AABBG
+AABBG
+CC.DD
+CC.DD
+EE.FF
+Solving Results
+Solution found: No
+Time taken: 7ms
+Steps taken: 10

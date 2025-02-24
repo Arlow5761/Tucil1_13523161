@@ -1,0 +1,8 @@
+AABB
+A.B.
+CCDD
+CEED
+Solving Results
+Solution found: No
+Time taken: 5ms
+Steps taken: 6
